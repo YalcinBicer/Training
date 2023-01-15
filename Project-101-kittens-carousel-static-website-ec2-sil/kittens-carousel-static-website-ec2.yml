@@ -11,11 +11,12 @@ Description: |
   is downloaded from my Public Github repository,
   then deployed on Apache Web Server.
   
+  
 Resources:
-  WebServerSecurityGroup:
+  WebcfnSecGrp:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Enable HTTP for Apache Web Server and SSH for secure connection.
+      GroupDescription: Enable HTTP for Apache Web Server and SSH for  # Required
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
@@ -33,7 +34,7 @@ Resources:
       InstanceType: t2.micro
       KeyName: second-key
       SecurityGroupIds:
-        - !Ref WebServerSecurityGroup
+        - !Ref WebcfnSecGrp
       Tags:
         - Key: Name
           Value: !Sub Web Server of ${AWS::StackName} Stack
@@ -43,7 +44,7 @@ Resources:
             #! /bin/bash
             yum update -y
             yum install httpd -y
-            FOLDER="https://raw.githubusercontent.com/YakupBicer/my-projects/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web"
+            FOLDER="https://raw.githubusercontent.com/YalcinBicer/Training/main/Project-101-kittens-carousel-static-website-ec2-sil/static-web"
             cd /var/www/html
             wget $FOLDER/index.html
             wget $FOLDER/cat0.jpg
