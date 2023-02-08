@@ -10,8 +10,8 @@ Description: |
 Parameters:
   KeyName:
     Description: Enter the name of your Key Pair for SSH connections
-    Type: AWS::EC2::KeyPair::KeyName
- 
+    Type: AWS::EC2::KeyPair::KeyName  
+
 Resources:
   WebServerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -41,17 +41,17 @@ Resources:
         yum install python3 -y
         pip3 install flask
         cd /home/ec2-user
-        wget https://raw.githubusercontent.com/XXXXXXXXXX/my-projects-2/main/aws/projects/Project-001-Roman-Numerals-Converter/app.py
+        wget https://raw.githubusercontent.com/YalcinBicer/my-projects/main/aws/Project-001-Roman-Numerals-Converter/app.py
         mkdir templates
         cd templates
-        wget https://raw.githubusercontent.com/XXXXXXXXXX/my-projects-2/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/index.html
-        wget https://raw.githubusercontent.com/XXXXXXXXXX/my-projects-2/main/aws/projects/Project-001-Roman-Numerals-Converter/templates/result.html
+        wget https://raw.githubusercontent.com/YalcinBicer/my-projects/main/aws/Project-001-Roman-Numerals-Converter/templates/index.html
+        wget https://raw.githubusercontent.com/YalcinBicer/my-projects/main/aws/Project-001-Roman-Numerals-Converter/templates/result.html
         cd ..
-        python3 app.py
+        python3 app.py 
       Tags:
         - Key: Name
-          Value: !Sub Web Server of ${AWS::StackName} Stack
-
+          Value: !Sub Web Server of ${AWS::StackName} Stack               
+          
 Outputs:
   WebsiteURL:
     Value: !Sub

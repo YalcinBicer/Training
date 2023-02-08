@@ -6,7 +6,6 @@ Description: |
   custom security group allowing http connections on port 80 and SSH connection on port 22. 
   Roman Numerals Converter Application is downloaded from Github repository, 
   then installed on Flask.
-
 Parameters:
   KeyName:
     Description: Enter the name of your Key Pair for SSH connections
@@ -35,6 +34,7 @@ Resources:
       InstanceType: t2.micro
       SecurityGroupIds:
         - !Ref WebServerSecurityGroup
+
       UserData: !Base64 |
         #!/bin/bash 
         yum update -y
@@ -47,11 +47,12 @@ Resources:
         wget https://raw.githubusercontent.com/YalcinBicer/my-projects/main/aws/Project-001-Roman-Numerals-Converter/templates/index.html
         wget https://raw.githubusercontent.com/YalcinBicer/my-projects/main/aws/Project-001-Roman-Numerals-Converter/templates/result.html
         cd ..
-        python3 app.py 
+        python3 app.py        
+  
       Tags:
         - Key: Name
-          Value: !Sub Web Server of ${AWS::StackName} Stack               
-          
+          Value: !Sub Web Server of ${AWS::StackName} Stack
+            
 Outputs:
   WebsiteURL:
     Value: !Sub
